@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Bunty ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink: #ff8fc7;
+    --purple-deep: #090b1a;
+    --purple-mid: #0d0812;
+    --gold: #b9dcff;
+    --teal: #8ec9ff;
+    --cream: #ffffff;
+    --ink: #090b1a;
+    --nav-h: 64px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    font-family: 'Nunito', sans-serif;
+    background: var(--purple-deep);
+    background-image:
+      radial-gradient(ellipse 60% 40% at 20% 15%, rgba(255,105,180,0.22), transparent 60%),
+      radial-gradient(ellipse 55% 40% at 80% 10%, rgba(100,180,255,0.18), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 50% 60%, rgba(180,90,255,0.16), transparent 65%),
+      linear-gradient(180deg, var(--purple-deep) 0%, var(--purple-mid) 100%);
+    color: #c8c9d8;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  h1,h2,h3,.display{ font-family: 'Baloo 2', cursive; font-weight: 800; margin:0; }
+  a{ color: inherit; text-decoration: none; }
+  button{ font-family: inherit; }
+
+  /* ---------- Ambience ---------- */
+  .sky{ position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .star{ position: absolute; background: var(--cream); border-radius: 50%; opacity:.5; animation: twinkle 3.5s ease-in-out infinite; }
+  @keyframes twinkle{ 0%,100%{opacity:.12;} 50%{opacity:.7;} }
+
+  main{ position: relative; z-index: 1; }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 4vw, 34px);
+    background: rgba(36,16,64,.55);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    padding: 0 16px;
+  }
+  nav a{
+    font-size: .92rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    color: rgba(255,255,255,.78);
+    padding: 6px 4px;
+    border-bottom: 2px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
+    white-space: nowrap;
+  }
+  nav a:hover, nav a:focus-visible{ color: var(--gold); border-color: var(--gold); }
+  nav .brand{
+    color: var(--gold);
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    margin-right: auto;
+    font-size: 1rem;
+  }
+  @media (max-width: 460px){
+    nav .brand{ margin-right: 0; }
+    nav{ justify-content: space-between; overflow-x: auto; }
+  }
+
+  /* ---------- Balloons ---------- */
+  .balloon-field{ position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .balloon{
+    position: absolute; bottom: -220px; width: 66px; height: 84px;
+    border-radius: 50% 50% 46% 46%;
+    animation: rise linear infinite;
+    filter: drop-shadow(0 10px 12px rgba(0,0,0,.25));
+  }
+  .balloon::before{ content:''; position:absolute; top:-8px; left:26px; width:14px; height:14px; background:inherit; clip-path: polygon(50% 100%, 0 0, 100% 0); }
+  .balloon::after{ content:''; position:absolute; bottom:-70px; left:50%; width:1px; height:70px; background: rgba(255,255,255,.35); }
+  .balloon.b1{ left:6%;  background: #ff8fc7; animation-duration:13s; }
+  .balloon.b2{ left:20%; background: #c49aff; animation-duration:16s; animation-delay:2s; width:54px; height:70px; }
+  .balloon.b3{ left:36%; background: #8ec9ff; animation-duration:12s; animation-delay:5s; }
+  .balloon.b4{ left:58%; background: #ff8fc7; animation-duration:18s; animation-delay:1s; width:58px; height:76px; }
+  .balloon.b5{ left:74%; background: #c49aff; animation-duration:14s; animation-delay:4s; }
+  .balloon.b6{ left:88%; background: #8ec9ff; animation-duration:17s; animation-delay:3s; width:56px; height:72px; }
+  @keyframes rise{
+    0%{ transform: translateY(0) rotate(-3deg); }
+    50%{ transform: translateY(-55vh) rotate(3deg); }
+    100%{ transform: translateY(-115vh) rotate(-3deg); }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height: calc(100svh - var(--nav-h));
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 32px 20px 70px; position: relative;
+  }
+  .eyebrow{
+    font-size: 13px; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin-bottom: 16px;
+    opacity: 0; animation: fadeUp .8s ease forwards .1s;
+  }
+  .hero h1{
+    font-size: clamp(2.6rem, 10vw, 5.6rem); line-height: 1;
+    opacity: 0; animation: fadeUp .9s ease forwards .3s;
+  }
+  .hero h1 .name{
+    display: block; margin-top: 6px;
+    background: linear-gradient(95deg, #ffffff, #ffd1e9 55%, #b9dcff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    font-size: clamp(3.2rem, 14vw, 7.5rem);
+  }
+  .hero p{
+    max-width: 46ch; margin: 24px auto 0; font-size: clamp(1.02rem, 2.3vw, 1.2rem);
+    color: #b9bac8;
+    opacity: 0; animation: fadeUp .9s ease forwards .55s;
+  }
+  @keyframes fadeUp{ from{ opacity:0; transform: translateY(18px);} to{ opacity:1; transform: translateY(0);} }
+
+  .surprise-btn{
+    margin-top: 34px;
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1rem, 2.8vw, 1.2rem);
+    font-weight: 700;
+    color: var(--ink);
+    background: linear-gradient(95deg, var(--gold), #ffd1e9);
+    border: none;
+    padding: 16px 36px;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 14px 30px -8px rgba(255,143,199,.5);
+    transition: transform .25s ease, box-shadow .25s ease;
+    opacity: 0; animation: fadeUp .9s ease forwards .8s;
+  }
+  .surprise-btn:hover{ transform: translateY(-3px) scale(1.03); box-shadow: 0 20px 36px -8px rgba(255,201,60,.7); }
+  .surprise-btn:active{ transform: translateY(0) scale(.98); }
+  .surprise-btn:focus-visible{ outline: 3px solid var(--cream); outline-offset: 4px; }
+
+  .scroll-cue{
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+    color: rgba(255,255,255,.6); display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0; animation: fadeUp .8s ease forwards 1.15s;
+  }
+  .scroll-cue span{ width: 1px; height: 30px; background: linear-gradient(180deg, rgba(255,255,255,.7), transparent); animation: pulseLine 1.8s ease-in-out infinite; }
+  @keyframes pulseLine{ 0%,100%{ transform: scaleY(1); opacity:.5;} 50%{ transform: scaleY(1.3); opacity:1;} }
+
+  /* ---------- Section shell ---------- */
+  section{ padding: 100px 20px; position: relative; scroll-margin-top: var(--nav-h); }
+  .section-inner{ max-width: 900px; margin: 0 auto; text-align: center; }
+  .eyebrow-sm{
+    font-size: 12px; letter-spacing: .24em; text-transform: uppercase;
+    color: var(--teal); font-weight: 700; margin-bottom: 12px; display: block;
+  }
+  .section-title{ font-size: clamp(1.9rem, 5.5vw, 2.8rem); margin-bottom: 50px; }
+
+  /* ---------- Wishes grid ---------- */
+  .wish-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    text-align: left;
+  }
+  @media (max-width: 760px){ .wish-grid{ grid-template-columns: 1fr; } }
+
+  .wish-card{
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 20px;
+    padding: 30px 26px;
+    backdrop-filter: blur(6px);
+    transition: transform .3s ease, border-color .3s ease, background .3s ease;
+  }
+  .wish-card:hover{
+    transform: translateY(-6px);
+    border-color: rgba(255,201,60,.5);
+    background: rgba(255,255,255,.1);
+  }
+  .wish-icon{ font-size: 2rem; margin-bottom: 16px; display: block; }
+  .wish-card h3{ font-size: 1.25rem; margin-bottom: 10px; color: var(--gold); }
+  .wish-card p{ font-size: .98rem; line-height: 1.6; color: rgba(255,255,255,.82); margin: 0; }
+
+  /* ---------- Message ---------- */
+  .note-card{
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 24px;
+    padding: clamp(30px, 6vw, 56px);
+    backdrop-filter: blur(6px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .note-card::before{
+    content: '“'; position: absolute; top: -34px; left: 22px;
+    font-family: 'Baloo 2', cursive; font-size: 180px; color: rgba(255,143,199,.16); line-height: 1;
+  }
+  .quote-line{
+    position: relative;
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1.3rem, 3.6vw, 1.9rem);
+    color: var(--gold);
+    margin-bottom: 26px;
+  }
+  .wish-text{
+    position: relative; font-style: italic; font-weight: 600;
+    font-size: clamp(1.05rem, 2.4vw, 1.28rem); line-height: 1.65; color: var(--cream);
+  }
+  .wish-sign{ margin-top: 22px; font-family: 'Baloo 2', cursive; font-style: normal; color: var(--teal); font-size: 1.05rem; }
+
+  /* ---------- Final ---------- */
+  .final{ text-align: center; padding-bottom: 130px; }
+  .final .eyebrow-sm{ color: var(--pink); }
+
+  footer{
+    text-align: center; padding: 40px 20px 56px;
+    color: rgba(255,255,255,.5); font-size: .88rem; position: relative; z-index: 1;
+  }
+
+  #confetti-canvas{ position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
+
+  @media (max-width: 480px){
+    section{ padding: 74px 16px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sky" id="sky"></div>
+<canvas id="confetti-canvas"></canvas>
+
+<nav>
+  <span class="brand">🎂 Bunty</span>
+  <a href="#home">Home</a>
+  <a href="#wishes">Wishes</a>
+  <a href="#message">Message</a>
+  <a href="#final">✨</a>
+</nav>
+
+<main>
+
+  <section id="home" class="hero">
+    <div class="balloon-field">
+      <div class="balloon b1"></div>
+      <div class="balloon b2"></div>
+      <div class="balloon b3"></div>
+      <div class="balloon b4"></div>
+      <div class="balloon b5"></div>
+      <div class="balloon b6"></div>
+    </div>
+
+    <p class="eyebrow">🎂 A little celebration for someone special</p>
+    <h1>Happy Birthday<span class="name">Bunty</span></h1>
+    <p>Today is officially a little brighter, a little happier, and definitely worth celebrating. So here's a tiny corner of the internet made just for your birthday. ✨</p>
+
+    <button class="surprise-btn" id="open-surprise">Open the surprise ✨</button>
+    <div class="scroll-cue"><span></span>scroll to explore</div>
+  </section>
+
+  <section id="wishes">
+    <div class="section-inner">
+      <span class="eyebrow-sm">Birthday wishes</span>
+      <h2 class="section-title">Three things for your year ahead</h2>
+      <div class="wish-grid">
+        <div class="wish-card">
+          <span class="wish-icon">🌟</span>
+          <h3>More happy moments</h3>
+          <p>May your year be packed with random laughs, unforgettable days, and moments that become your favourite memories.</p>
+        </div>
+        <div class="wish-card">
+          <span class="wish-icon">🚀</span>
+          <h3>Big dreams</h3>
+          <p>Keep chasing the things that make you excited. Hopefully this year takes you closer to everything you want.</p>
+        </div>
+        <div class="wish-card">
+          <span class="wish-icon">🍀</span>
+          <h3>Good vibes only</h3>
+          <p>Wishing you good people, good opportunities, peaceful days, and just the right amount of chaos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="message">
+    <div class="section-inner">
+      <span class="eyebrow-sm">A note for Bunty</span>
+      <h2 class="section-title">One simple wish</h2>
+      <div class="note-card">
+        <p class="quote-line">"May the next chapter be even better than the last one."</p>
+        <p class="wish-text">Happy Birthday, Bunty! Stay the same fun, genuine person you are, keep smiling, keep enjoying the little things, and make this year one you'll look back on with a huge smile.</p>
+        <p class="wish-sign">— With love, on your day 🎈</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="final" class="final">
+    <div class="section-inner">
+      <span class="eyebrow-sm">🎈 End of the little surprise</span>
+      <h2 class="section-title">Have an amazing year</h2>
+      <p style="color: rgba(255,255,255,.75); margin-bottom: 34px;">Happy Birthday once again, Bunty! 🥳</p>
+      <button class="surprise-btn" id="confetti-btn">Celebrate again ✨</button>
+    </div>
+  </section>
+
+</main>
+
+<footer>Made with care for Bunty's birthday 💛</footer>
+
+<script>
+  // ---- Stars ----
+  (function stars(){
+    const sky = document.getElementById('sky');
+    const n = window.innerWidth < 600 ? 24 : 44;
+    for(let i=0;i<n;i++){
+      const s = document.createElement('div');
+      s.className = 'star';
+      const size = Math.random()*2 + 1;
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.left = Math.random()*100 + '%';
+      s.style.top = Math.random()*100 + '%';
+      s.style.animationDelay = (Math.random()*3.5) + 's';
+      sky.appendChild(s);
+    }
+  })();
+
+  // ---- Confetti engine ----
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const colors = ['#ff8fc7', '#8ec9ff', '#c49aff', '#ffffff', '#b9dcff'];
+
+  function resizeCanvas(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  function burstConfetti(count, originY){
+    const originX = canvas.width/2;
+    const oy = originY !== undefined ? originY : canvas.height*0.4;
+    for(let i=0;i<count;i++){
+      particles.push({
+        x: originX + (Math.random()-0.5)*140,
+        y: oy,
+        vx: (Math.random()-0.5)*11,
+        vy: -(Math.random()*11 + 5),
+        size: Math.random()*7 + 4,
+        color: colors[Math.floor(Math.random()*colors.length)],
+        rot: Math.random()*Math.PI,
+        vr: (Math.random()-0.5)*0.3,
+        life: 0,
+        shape: Math.random() > .5 ? 'rect' : 'circle'
+      });
+    }
+    if(!animating) animate();
+  }
+
+  let animating = false;
+  function animate(){
+    animating = true;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p => {
+      p.vy += 0.28;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rot += p.vr;
+      p.life++;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = Math.max(0, 1 - p.life/160);
+      if(p.shape === 'rect'){ ctx.fillRect(-p.size/2, -p.size/3, p.size, p.size*0.6); }
+      else{ ctx.beginPath(); ctx.arc(0,0,p.size/2,0,Math.PI*2); ctx.fill(); }
+      ctx.restore();
+    });
+    particles = particles.filter(p => p.life < 170 && p.y < canvas.height + 40);
+    if(particles.length > 0){ requestAnimationFrame(animate); }
+    else{ animating = false; ctx.clearRect(0,0,canvas.width,canvas.height); }
+  }
+
+  document.getElementById('open-surprise').addEventListener('click', () => {
+    burstConfetti(130, canvas.height*0.3);
+    document.getElementById('wishes').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('confetti-btn').addEventListener('click', () => {
+    burstConfetti(140, canvas.height*0.6);
+  });
+</script>
+
+</body>
+</html>
